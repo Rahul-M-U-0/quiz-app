@@ -103,22 +103,29 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.network(
-                                          ds["image"],
-                                          fit: BoxFit.cover,
-                                          height: 300,
-                                          width:
-                                              MediaQuery.of(context).size.width,
+                                    if (ds["image"] != null)
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 20,
+                                          bottom: 20,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            ds["image"],
+                                            fit: BoxFit.cover,
+                                            height: 300,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    if (ds["image"] == null)
+                                      SizedBox(
+                                        height: 250,
+                                      ),
                                     GestureDetector(
                                       onTap: () {
                                         if (!providerValue.show) {
